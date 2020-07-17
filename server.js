@@ -37,73 +37,73 @@ app.get("/test", (req, res) => {
   });
 });
 
-app.post("/menu", (req, res) => {
-  Menu.create(req.body, (err, newCat) => {
-    if (err) {
-      res.send(err);
-    } else {
-      Menu.find({}, (err, menu) => {
-        res.json(menu);
-      });
-    }
-  });
-});
-
-app.get("/menu/:catId", (req, res) => {
-  Menu.categories.find({ _id: req.params.catId }, (err, category) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.json(category);
-    }
-  });
-});
-
-app.get("/menu", (req, res) => {
-  Menu.find({}, (err, menu) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.json(menu);
-    }
-  });
-});
-
-app.post("/new-menu", (req, res) => {
-  let cats = [...req.body];
-  for (let i = 0; i < cats.length; i++) {
-    Menu.findByIdAndUpdate(
-      cats[i]._id,
-      cats[i],
-      { new: true },
-      (err, updatedCat) => {
-        if (err) {
-          log(err);
-        }
-      }
-    );
-  }
-  Menu.find({}, (err, menu) => {
-    res.json(menu);
-  });
-});
-
-app.put("/menu/:id", (req, res) => {
-  Menu.findByIdAndUpdate(
-    req.params.id,
-    { $push: { items: req.body } },
-    { new: true },
-    (err, newItem) => {
-      if (err) {
-        res.send(err);
-      } else {
-        Menu.find({}, (err, menu) => {
-          res.json(menu);
-        });
-      }
-    }
-  );
-});
+// app.post("/menu", (req, res) => {
+//   Menu.create(req.body, (err, newCat) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       Menu.find({}, (err, menu) => {
+//         res.json(menu);
+//       });
+//     }
+//   });
+// });
+//
+// app.get("/menu/:catId", (req, res) => {
+//   Menu.categories.find({ _id: req.params.catId }, (err, category) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.json(category);
+//     }
+//   });
+// });
+//
+// app.get("/menu", (req, res) => {
+//   Menu.find({}, (err, menu) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.json(menu);
+//     }
+//   });
+// });
+//
+// app.post("/new-menu", (req, res) => {
+//   let cats = [...req.body];
+//   for (let i = 0; i < cats.length; i++) {
+//     Menu.findByIdAndUpdate(
+//       cats[i]._id,
+//       cats[i],
+//       { new: true },
+//       (err, updatedCat) => {
+//         if (err) {
+//           log(err);
+//         }
+//       }
+//     );
+//   }
+//   Menu.find({}, (err, menu) => {
+//     res.json(menu);
+//   });
+// });
+//
+// app.put("/menu/:id", (req, res) => {
+//   Menu.findByIdAndUpdate(
+//     req.params.id,
+//     { $push: { items: req.body } },
+//     { new: true },
+//     (err, newItem) => {
+//       if (err) {
+//         res.send(err);
+//       } else {
+//         Menu.find({}, (err, menu) => {
+//           res.json(menu);
+//         });
+//       }
+//     }
+//   );
+// });
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
