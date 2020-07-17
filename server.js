@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const db = mongoose.connection;
 require("dotenv").config();
+const Menu = require("./models/menu.js");
 
 //================
 //MIDDLEWARE
