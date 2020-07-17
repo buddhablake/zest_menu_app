@@ -59,6 +59,7 @@ class MenuItem extends Component {
             menu={menu}
             updateItem={updateItem}
             categoryId={category._id}
+            toggleEditForm={toggleEditForm}
           />
         ) : null}
       </div>

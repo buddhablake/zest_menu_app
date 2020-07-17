@@ -30,9 +30,10 @@ class EditItemForm extends Component {
 
   sendUpdatedItem = (e) => {
     e.preventDefault();
-    const { updateItem, categoryId, item } = this.props;
+    const { updateItem, categoryId, item, toggleEditForm } = this.props;
     const id = categoryId + "/" + item._id;
     updateItem(this.state, id);
+    toggleEditForm();
   };
 
   uploadFile = (e) => {
@@ -59,7 +60,7 @@ class EditItemForm extends Component {
           Image
           <input type="file" onChange={uploadFile} />
         </label>
-        <input type="url" id="updatedItemImage" style={{ display: "block" }} />
+
         <label>
           Title
           <input
