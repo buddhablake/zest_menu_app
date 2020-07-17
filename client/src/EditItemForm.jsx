@@ -3,7 +3,7 @@ import S3FileUpload from "react-s3";
 
 class EditItemForm extends Component {
   state = {
-    image: this.props.item.image,
+    image: document.querySelector("#updatedItemImage").value,
     title: this.props.item.title,
     description: this.props.item.description,
     price: this.props.item.price,
@@ -13,7 +13,6 @@ class EditItemForm extends Component {
   setUpdatedItem = (e) => {
     const { item } = this.props;
     this.setState({
-      image: document.querySelector("#updatedItemImage").value,
       title: e.target.id === "updatedItemTitle" ? e.target.value : item.title,
       description:
         e.target.id === "updatedItemDescription"
