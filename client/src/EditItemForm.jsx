@@ -6,7 +6,6 @@ class EditItemForm extends Component {
 
   componentDidMount = () => {
     this.setState({
-      image: document.querySelector("#updatedItemImage").value,
       title: this.props.item.title,
       description: this.props.item.description,
       price: this.props.item.price,
@@ -29,6 +28,9 @@ class EditItemForm extends Component {
   };
 
   sendUpdatedItem = (e) => {
+    this.setState({
+      image: document.querySelector("#updatedItemImage").value,
+    });
     e.preventDefault();
     const { updateItem, categoryId, item } = this.props;
     const id = categoryId + "/" + item._id;
