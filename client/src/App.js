@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./App.css";
-import Menu from "./Menu";
-import Categories from "./Categories";
-import MenuItemForm from "./MenuItemForm";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import Menu from "./Menu";
+// import Categories from "./Categories";
+// import MenuItemForm from "./MenuItemForm";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class App extends Component {
   // state = {
