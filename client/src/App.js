@@ -13,6 +13,11 @@ class App extends Component {
     category: "",
   };
 
+  //================
+  //Orders the menu
+  //by category Id
+  //set by the user
+  //=================
   sortMenu = (menu) => {
     menu.sort((a, b) => {
       if (a.catOrderId > b.catOrderId) {
@@ -30,6 +35,10 @@ class App extends Component {
     });
   };
 
+  //=============
+  //READ
+  //=============
+
   componentDidMount = () => {
     axios.get("/menu").then((response) => {
       if (response.data.length) {
@@ -38,6 +47,9 @@ class App extends Component {
     });
   };
 
+  //=============
+  //CREATE
+  //=============
   setCategory = (e) => {
     this.setState({
       category: e.target.value,
@@ -104,6 +116,26 @@ class App extends Component {
     });
   };
 
+  //=============
+  //Update
+  //=============
+  updateItem = (updatedItem, id) => {
+    axios.put("/menu/update/" + id, updatedItem).then((response) => {
+      this.sortMenu(response.data);
+    });
+  };
+
+  //=============
+  //Delete
+  //=============
+
+  deleteItem = (e) => {
+    const id = e.target.value;
+    axios.delete("/menu/delete/" + id).then((response) => {
+      this.sortMenu(response.data);
+    });
+  };
+
   render() {
     const { menu, category } = this.state;
     const {
@@ -112,43 +144,53 @@ class App extends Component {
       setItem,
       createItem,
       setNewCatOrder,
+      deleteItem,
+      updateItem,
     } = this;
     return (
-      <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Menu</Link>
-            </li>
+      <div className="App">
+        <Router>
+          <div>
+            <ul>
+              <li>
+                <Link to="/">Menu</Link>
+              </li>
 
-            <li>
-              <Link to="/dash">Dashboard</Link>
-            </li>
-          </ul>
-        </div>
+              <li>
+                <Link to="/dash">Dashboard</Link>
+              </li>
+            </ul>
+          </div>
 
-        <div className="App">
-          <Switch>
-            <Route exact path="/">
-              <Menu menu={menu} />
-            </Route>
+          <div>
+            <Switch>
+              <Route exact path="/">
+                <Menu menu={menu} />
+              </Route>
 
-            <Route path="/dash">
-              <Categories
-                createCategory={createCategory}
-                setCategory={setCategory}
-                menu={menu}
-                setNewCatOrder={setNewCatOrder}
-              />
-              <MenuItemForm
-                menu={menu}
-                setItem={setItem}
-                createItem={createItem}
-              />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+              <Route path="/dash">
+                <Categories
+                  createCategory={createCategory}
+                  setCategory={setCategory}
+                  menu={menu}
+                  setNewCatOrder={setNewCatOrder}
+                />
+                <MenuItemForm
+                  menu={menu}
+                  setItem={setItem}
+                  createItem={createItem}
+                />
+                <Menu
+                  menu={menu}
+                  canEdit={true}
+                  deleteItem={deleteItem}
+                  updateItem={updateItem}
+                />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </div>
     );
   }
 }

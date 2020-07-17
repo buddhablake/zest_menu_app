@@ -32,9 +32,22 @@ db.on("error", (err) => console.log(err.message + " is Mongod not running?"));
 db.on("connected", () => console.log("mongo connected: ", MONGODB_URI));
 db.on("disconnected", () => console.log("mongo disconnected"));
 
-app.get("/test", (req, res) => {
-  res.json({
-    test: "test",
+app.post("/new-menu", (req, res) => {
+  let cats = [...req.body];
+  for (let i = 0; i < cats.length; i++) {
+    Menu.findByIdAndUpdate(
+      cats[i]._id,
+      cats[i],
+      { new: true },
+      (err, updatedCat) => {
+        if (err) {
+          log(err);
+        }
+      }
+    );
+  }
+  Menu.find({}, (err, menu) => {
+    res.json(menu);
   });
 });
 
@@ -70,23 +83,16 @@ app.get("/menu", (req, res) => {
   });
 });
 
-app.post("/new-menu", (req, res) => {
-  let cats = [...req.body];
-  for (let i = 0; i < cats.length; i++) {
-    Menu.findByIdAndUpdate(
-      cats[i]._id,
-      cats[i],
-      { new: true },
-      (err, updatedCat) => {
-        if (err) {
-          log(err);
-        }
-      }
-    );
-  }
-  Menu.find({}, (err, menu) => {
-    res.json(menu);
-  });
+app.put("/menu/update/:catId/:itemId", (req, res) => {
+  Menu.updateOne(
+    { _id: req.params.catId, "items._id": req.params.itemId },
+    { $set: { "items.$": req.body } },
+    (err, item) => {
+      Menu.find({}, (err, menu) => {
+        res.json(menu);
+      });
+    }
+  );
 });
 
 app.put("/menu/:id", (req, res) => {
@@ -97,6 +103,23 @@ app.put("/menu/:id", (req, res) => {
     (err, newItem) => {
       if (err) {
         res.send(err);
+      } else {
+        Menu.find({}, (err, menu) => {
+          res.json(menu);
+        });
+      }
+    }
+  );
+});
+
+app.delete("/menu/delete/:catId/:itemId", (req, res) => {
+  console.log("hello");
+  Menu.findByIdAndUpdate(
+    req.params.catId,
+    { $pull: { items: { _id: req.params.itemId } } },
+    (err, pulledItem) => {
+      if (err) {
+        console.log(err);
       } else {
         Menu.find({}, (err, menu) => {
           res.json(menu);

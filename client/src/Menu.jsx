@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-
+import MenuItem from "./MenuItem";
+import EditItemForm from "./EditItemForm";
 class Menu extends Component {
   state = {};
 
   render = () => {
-    const { menu } = this.props;
+    const { menu, canEdit, deleteItem, updateItem } = this.props;
+
     return (
       <div>
         {menu ? (
@@ -15,26 +17,14 @@ class Menu extends Component {
                   <h2>{category.category}</h2>
                   {category.items.map((item, index) => {
                     return (
-                      <div>
-                        <div className="relative bg-white rounded-md overflow-hidden text-gray-800 shadow-2xl m-4">
-                          <div ClassName="">
-                            <img
-                              className="object-cover w-full h-64"
-                              src={item.image}
-                              alt={item.description}
-                            />
-                          </div>
-                          <div className="px-4 py-6 flex flex-col relative">
-                            <h1 className="text-xl mb-2 font-semibold ">
-                              {item.title}
-                            </h1>
-                            <p className="text-gray-700">{item.description}</p>
-                            <p className="self-end inline bg-orange-300 absolute top-0 right-0 px-3 py-1 rounded-b rounded-br-none text-orange-800 shadow">
-                              ${item.price}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      <MenuItem
+                        canEdit={canEdit}
+                        menu={menu}
+                        item={item}
+                        deleteItem={deleteItem}
+                        category={category}
+                        updateItem={updateItem}
+                      />
                     );
                   })}
                 </div>
