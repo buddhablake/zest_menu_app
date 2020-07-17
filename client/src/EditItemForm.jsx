@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import S3FileUpload from "react-s3";
 
 class EditItemForm extends Component {
-  state = {
-    image: document.querySelector("#updatedItemImage").value,
-    title: this.props.item.title,
-    description: this.props.item.description,
-    price: this.props.item.price,
-    available: this.props.item.available,
+  state = {};
+
+  componentDidMount = () => {
+    this.setState({
+      image: document.querySelector("#updatedItemImage").value,
+      title: this.props.item.title,
+      description: this.props.item.description,
+      price: this.props.item.price,
+      available: this.props.item.available,
+    });
   };
 
   setUpdatedItem = (e) => {
