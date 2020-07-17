@@ -6,6 +6,7 @@ class EditItemForm extends Component {
 
   componentDidMount = () => {
     this.setState({
+      image: this.props.item.image,
       title: this.props.item.title,
       description: this.props.item.description,
       price: this.props.item.price,
@@ -28,9 +29,6 @@ class EditItemForm extends Component {
   };
 
   sendUpdatedItem = (e) => {
-    this.setState({
-      image: document.querySelector("#updatedItemImage").value,
-    });
     e.preventDefault();
     const { updateItem, categoryId, item } = this.props;
     const id = categoryId + "/" + item._id;
@@ -46,8 +44,9 @@ class EditItemForm extends Component {
     };
 
     S3FileUpload.uploadFile(e.target.files[0], config).then((response) => {
-      console.log(response);
-      document.querySelector("#updatedItemImage").value = response.location;
+      this.setState({
+        image: response.location,
+      });
     });
   };
 
@@ -60,12 +59,7 @@ class EditItemForm extends Component {
           Image
           <input type="file" onChange={uploadFile} />
         </label>
-        <input
-          type="url"
-          id="updatedItemImage"
-          defaultValue={item.image}
-          style={{ display: "block" }}
-        />
+        <input type="url" id="updatedItemImage" style={{ display: "block" }} />
         <label>
           Title
           <input
