@@ -26,7 +26,7 @@ class MenuItem extends Component {
     return (
       <div>
         <div className="relative bg-white rounded-md overflow-hidden text-gray-800 shadow-2xl m-4">
-          <div className="relative bg-red-500" style={{ paddingBottom: "83%" }}>
+          <div className="relative bg-red-500" style={{ paddingBottom: "66%" }}>
             <img
               className="absolute h-full object-cover w-full"
               src={item.image}

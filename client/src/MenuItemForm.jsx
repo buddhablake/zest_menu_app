@@ -89,7 +89,7 @@ class MenuItemForm extends Component {
             <input
               type="submit"
               value="Create Menu Item"
-              className="col-span-1 bg-green-400 text-white text-md  rounded-md"
+              className="col-span-1 bg-blue-500 text-white text-md  rounded-md"
             />
           </form>
         </div>

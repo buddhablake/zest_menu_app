@@ -55,7 +55,10 @@ class EditItemForm extends Component {
     const { menu, item } = this.props;
     const { uploadFile, setUpdatedItem, sendUpdatedItem } = this;
     return (
-      <form onSubmit={sendUpdatedItem} className="grid grid-cols-2 gap-4 mt-10">
+      <form
+        onSubmit={sendUpdatedItem}
+        className="grid grid-cols-2 gap-4 mt-10 p-6"
+      >
         <input
           type="file"
           onChange={uploadFile}

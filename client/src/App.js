@@ -130,12 +130,12 @@ class App extends Component {
   //=============
 
   deleteItem = (e) => {
-    window.confirm("Are you sure you want to delete this item?");
-    const id = e.target.id;
-    console.log(id);
-    axios.delete("/menu/delete/" + id).then((response) => {
-      this.sortMenu(response.data);
-    });
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      const id = e.target.id;
+      axios.delete("/menu/delete/" + id).then((response) => {
+        this.sortMenu(response.data);
+      });
+    }
   };
 
   render() {
@@ -186,7 +186,7 @@ class App extends Component {
                           createItem={createItem}
                         />
 
-                        <div className="text-center text-white bg-blue-500 text-3xl p-3 rounded shadow-lg z-10 rounded-b-none  static">
+                        <div className="text-center text-white bg-blue-600 text-3xl p-3 rounded shadow-lg z-10 rounded-b-none  static">
                           Live Menu
                         </div>
                         <div
