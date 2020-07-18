@@ -36,10 +36,14 @@ class MenuItemForm extends Component {
               id="itemImage"
               style={{ display: "none" }}
             />
-            <label>
-              Title
-              <input type="text" onChange={setItem} id="itemTitle" />
-            </label>
+
+            <input
+              type="text"
+              onChange={setItem}
+              id="itemTitle"
+              className=""
+              placeholder="title"
+            />
 
             <label>
               Description

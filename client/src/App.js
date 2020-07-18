@@ -130,6 +130,7 @@ class App extends Component {
   //=============
 
   deleteItem = (e) => {
+    window.confirm("Are you sure you want to delete this item?");
     const id = e.target.value;
     axios.delete("/menu/delete/" + id).then((response) => {
       this.sortMenu(response.data);
@@ -151,7 +152,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            <ul>
+            <ul className="flex">
               <li>
                 <Link to="/">Menu</Link>
               </li>
@@ -162,30 +163,49 @@ class App extends Component {
             </ul>
           </div>
 
-          <div>
+          <div className="p-4">
             <Switch>
               <Route exact path="/">
-                <Menu menu={menu} />
+                <div className="flex justify-center min-w-screen">
+                  <Menu menu={menu} />
+                </div>
               </Route>
 
               <Route path="/dash">
-                <Categories
-                  createCategory={createCategory}
-                  setCategory={setCategory}
-                  menu={menu}
-                  setNewCatOrder={setNewCatOrder}
-                />
-                <MenuItemForm
-                  menu={menu}
-                  setItem={setItem}
-                  createItem={createItem}
-                />
-                <Menu
-                  menu={menu}
-                  canEdit={true}
-                  deleteItem={deleteItem}
-                  updateItem={updateItem}
-                />
+                <div
+                  className="flex justify-around items-center w-full min-h-screen bg-gray-300 p-8 rounded-lg"
+                  style={{ minWidth: "850px" }}
+                >
+                  <div className="flex flex-col ">
+                    {/*  <MenuItemForm
+                    menu={menu}
+                    setItem={setItem}
+                    createItem={createItem}
+                  />*/}
+                    <div className="text-center text-white bg-blue-500 text-3xl p-3 -m-4 z-10 rounded shadow-lg">
+                      Live Menu
+                    </div>
+                    <div
+                      className="bg-gray-100 rounded overflow-scroll py-6"
+                      style={{ width: "400px", height: "600px" }}
+                    >
+                      <Menu
+                        menu={menu}
+                        canEdit={true}
+                        deleteItem={deleteItem}
+                        updateItem={updateItem}
+                      />
+                    </div>
+                  </div>
+                  <div className="">
+                    <Categories
+                      createCategory={createCategory}
+                      setCategory={setCategory}
+                      menu={menu}
+                      setNewCatOrder={setNewCatOrder}
+                    />
+                  </div>
+                </div>
               </Route>
             </Switch>
           </div>

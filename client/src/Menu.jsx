@@ -8,25 +8,31 @@ class Menu extends Component {
     const { menu, canEdit, deleteItem, updateItem } = this.props;
 
     return (
-      <div>
+      <div style={{ maxWidth: "500px" }}>
         {menu ? (
-          <div className="w-full flex flex-col items-center justify-center bg-blue-100 pl-6 pr-6">
+          <div className="flex flex-col items-center justify-center pl-6 pr-6">
             {menu.map((category, index) => {
               return (
-                <div key={index}>
-                  <h2>{category.category}</h2>
-                  {category.items.map((item, index) => {
-                    return (
-                      <MenuItem
-                        canEdit={canEdit}
-                        menu={menu}
-                        item={item}
-                        deleteItem={deleteItem}
-                        category={category}
-                        updateItem={updateItem}
-                      />
-                    );
-                  })}
+                <div>
+                  {category.items.length ? (
+                    <div key={index}>
+                      <h2 className="text-center w-full text-2xl text-gray-800 pt-4">
+                        {category.category}
+                      </h2>
+                      {category.items.map((item, index) => {
+                        return (
+                          <MenuItem
+                            canEdit={canEdit}
+                            menu={menu}
+                            item={item}
+                            deleteItem={deleteItem}
+                            category={category}
+                            updateItem={updateItem}
+                          />
+                        );
+                      })}
+                    </div>
+                  ) : null}{" "}
                 </div>
               );
             })}

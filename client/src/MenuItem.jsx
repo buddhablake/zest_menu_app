@@ -26,18 +26,6 @@ class MenuItem extends Component {
     return (
       <div>
         <div className="relative bg-white rounded-md overflow-hidden text-gray-800 shadow-2xl m-4">
-          {canEdit ? (
-            <div>
-              <button onClick={toggleEditForm}>Edit</button>
-              <button
-                value={category._id + "/" + item._id}
-                onClick={deleteItem}
-              >
-                Delete
-              </button>
-            </div>
-          ) : null}
-
           <div className="">
             <img
               className="object-cover w-full h-64"
@@ -52,6 +40,23 @@ class MenuItem extends Component {
               ${item.price}
             </p>
           </div>
+          {canEdit ? (
+            <div className="flex">
+              <div
+                onClick={toggleEditForm}
+                className="text-center w-1/2 p-2 bg-orange-400 text-white text-lg hover:bg-orange-500 cursor-pointer"
+              >
+                Edit
+              </div>
+              <div
+                value={category._id + "/" + item._id}
+                onClick={deleteItem}
+                className="text-center w-1/2 p-2 bg-red-600 text-white text-lg hover:bg-red-500 cursor-pointer"
+              >
+                Delete
+              </div>
+            </div>
+          ) : null}
         </div>
         {showEditForm ? (
           <EditItemForm

@@ -39,7 +39,11 @@ class Categories extends Component {
     const { setCategory, createCategory, menu } = this.props;
     const { onDragEnd } = this;
     return (
-      <div>
+      <div className="bg-gray-300 p-4 rounded overflow-hidden shadow-lg">
+        <CategoryForm
+          setCategory={setCategory}
+          createCategory={createCategory}
+        />
         {menu ? (
           <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="categories">
@@ -48,23 +52,26 @@ class Categories extends Component {
                   <div ref={provided.innerRef} {...provided.droppableProps}>
                     {menu.map((category, index) => {
                       return (
-                        <Draggable
-                          key={index}
-                          draggableId={index + ""}
-                          index={index}
-                        >
-                          {(provided) => {
-                            return (
-                              <div
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                              >
-                                {category.category}
-                              </div>
-                            );
-                          }}
-                        </Draggable>
+                        <div>
+                          <Draggable
+                            key={index}
+                            draggableId={index + ""}
+                            index={index}
+                          >
+                            {(provided) => {
+                              return (
+                                <div
+                                  className="bg-orange-500 w-64 text-white text-center p-2 m-2 text-xl rounded shadow-md"
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                >
+                                  {category.category}
+                                </div>
+                              );
+                            }}
+                          </Draggable>
+                        </div>
                       );
                     })}
                     {provided.placeholder}
@@ -74,11 +81,6 @@ class Categories extends Component {
             </Droppable>
           </DragDropContext>
         ) : null}
-
-        <CategoryForm
-          setCategory={setCategory}
-          createCategory={createCategory}
-        />
       </div>
     );
   };
