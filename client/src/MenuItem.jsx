@@ -26,13 +26,14 @@ class MenuItem extends Component {
     return (
       <div>
         <div className="relative bg-white rounded-md overflow-hidden text-gray-800 shadow-2xl m-4">
-          <div className="">
+          <div className="relative bg-red-500" style={{ paddingBottom: "83%" }}>
             <img
-              className="object-cover w-full h-64"
+              className="absolute h-full object-cover w-full"
               src={item.image}
               alt={item.description}
             />
           </div>
+
           <div className="px-4 py-6 flex flex-col relative">
             <h1 className="text-xl mb-2 font-semibold ">{item.title}</h1>
             <p className="text-gray-700">{item.description}</p>
@@ -49,7 +50,7 @@ class MenuItem extends Component {
                 Edit
               </div>
               <div
-                value={category._id + "/" + item._id}
+                id={category._id + "/" + item._id}
                 onClick={deleteItem}
                 className="text-center w-1/2 p-2 bg-red-600 text-white text-lg hover:bg-red-500 cursor-pointer"
               >

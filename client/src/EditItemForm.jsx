@@ -55,41 +55,40 @@ class EditItemForm extends Component {
     const { menu, item } = this.props;
     const { uploadFile, setUpdatedItem, sendUpdatedItem } = this;
     return (
-      <form onSubmit={sendUpdatedItem}>
-        <label>
-          Image
-          <input type="file" onChange={uploadFile} />
-        </label>
+      <form onSubmit={sendUpdatedItem} className="grid grid-cols-2 gap-4 mt-10">
+        <input
+          type="file"
+          onChange={uploadFile}
+          className="col-span-2 cursor-pointer block"
+        />
 
-        <label>
-          Title
-          <input
-            type="text"
-            defaultValue={item.title}
-            onChange={setUpdatedItem}
-            id="updatedItemTitle"
-          />
-        </label>
+        <input
+          type="text"
+          defaultValue={item.title}
+          onChange={setUpdatedItem}
+          id="updatedItemTitle"
+          placeholder="title"
+          className="col-span-1 p-2 rounded  shadow"
+        />
 
-        <label>
-          Description
-          <textarea
-            defaultValue={item.description}
-            onChange={setUpdatedItem}
-            id="updatedItemDescription"
-          ></textarea>
-        </label>
+        <input
+          type="number"
+          defaultValue={item.price}
+          onChange={setUpdatedItem}
+          id="updatedItemPrice"
+          placeholder="price"
+          className="col-span-1 rounded p-2 shadow"
+        />
 
-        <label>
-          Price
-          <input
-            type="number"
-            defaultValue={item.price}
-            onChange={setUpdatedItem}
-            id="updatedItemPrice"
-          />
-        </label>
+        <textarea
+          defaultValue={item.description}
+          onChange={setUpdatedItem}
+          id="updatedItemDescription"
+          className="col-span-2 rounded p-2 shadow"
+          placeholder="description"
+        ></textarea>
 
+        {/*
         <label>
           Available now?
           {item.available ? (
@@ -107,8 +106,13 @@ class EditItemForm extends Component {
             />
           )}
         </label>
+        */}
 
-        <input type="submit" value="Update Item" />
+        <input
+          type="submit"
+          value="Update Item"
+          className="col-span-1 bg-orange-400 text-white text-md  rounded-md col-span-2 text-md p-2"
+        />
       </form>
     );
   };

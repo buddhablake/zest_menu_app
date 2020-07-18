@@ -3,7 +3,7 @@ class CategoryForm extends Component {
   state = {};
 
   render = () => {
-    const { setCategory, createCategory } = this.props;
+    const { setCategory, createCategory, category } = this.props;
     return (
       <div>
         <form
@@ -15,6 +15,7 @@ class CategoryForm extends Component {
             onChange={setCategory}
             className="p-2 rounded shadow mb-4"
             placeholder="Category"
+            value={category}
           />
           <input
             type="submit"

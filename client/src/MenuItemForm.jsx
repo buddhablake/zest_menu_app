@@ -27,49 +27,45 @@ class MenuItemForm extends Component {
         <div className="bg-green-400 p-4 text-center text-white rounded text-2xl font-bold rounded-b-none">
           Add Menu Items
         </div>
-        {menu ? (
-          <div className="p-6 bg-gray-300 mb-4 rounded rounded-t-none shadow-2xl">
-            <form
-              onSubmit={createItem}
-              className="grid grid-cols-2 gap-4 mt-10"
-            >
-              <input
-                type="file"
-                onChange={uploadFile}
-                className="col-span-2 cursor-pointer block pin-r pin-t"
-              />
 
-              <input
-                type="url"
-                onChange={setItem}
-                id="itemImage"
-                style={{ display: "none" }}
-              />
+        <div className="p-6 bg-gray-300 mb-4 rounded rounded-t-none shadow-2xl">
+          <form onSubmit={createItem} className="grid grid-cols-2 gap-4 mt-10">
+            <input
+              type="file"
+              onChange={uploadFile}
+              className="col-span-2 cursor-pointer"
+            />
 
-              <input
-                type="text"
-                onChange={setItem}
-                id="itemTitle"
-                className="col-span-1"
-                placeholder="title"
-                className="p-2 rounded  shadow"
-              />
-              <input
-                type="number"
-                onChange={setItem}
-                id="itemPrice"
-                placeholder="price"
-                className="col-span-1 rounded p-2 shadow"
-              />
+            <input
+              type="url"
+              onChange={setItem}
+              id="itemImage"
+              style={{ display: "none" }}
+            />
 
-              <textarea
-                onChange={setItem}
-                id="itemDescription"
-                className="col-span-2 rounded p-2 shadow"
-                placeholder="description"
-              ></textarea>
+            <input
+              type="text"
+              onChange={setItem}
+              id="itemTitle"
+              placeholder="title"
+              className=" col-span-1 p-2 rounded  shadow"
+            />
+            <input
+              type="number"
+              onChange={setItem}
+              id="itemPrice"
+              placeholder="price"
+              className="col-span-1 rounded p-2 shadow"
+            />
 
-              {/*
+            <textarea
+              onChange={setItem}
+              id="itemDescription"
+              className="col-span-2 rounded p-2 shadow"
+              placeholder="description"
+            ></textarea>
+
+            {/*
               <input
                 type="checkbox"
                 onChange={setItem}
@@ -77,27 +73,26 @@ class MenuItemForm extends Component {
                 className="col-span-1"
               />
               */}
-              <select
-                id="itemCategory"
-                onChange={setItem}
-                className="col-span-1 p-2 rounded"
-              >
-                {menu.map((category, index) => {
-                  return (
-                    <option value={category._id} id={category._id} key={index}>
-                      {category.category}
-                    </option>
-                  );
-                })}
-              </select>
-              <input
-                type="submit"
-                value="Create Menu Item"
-                className="col-span-1 bg-green-400 text-white text-md  rounded-md"
-              />
-            </form>
-          </div>
-        ) : null}
+            <select
+              id="itemCategory"
+              onChange={setItem}
+              className="col-span-1 p-2 rounded"
+            >
+              {menu.map((category, index) => {
+                return (
+                  <option value={category._id} id={category._id} key={index}>
+                    {category.category}
+                  </option>
+                );
+              })}
+            </select>
+            <input
+              type="submit"
+              value="Create Menu Item"
+              className="col-span-1 bg-green-400 text-white text-md  rounded-md"
+            />
+          </form>
+        </div>
       </div>
     );
   };

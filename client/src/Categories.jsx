@@ -36,7 +36,7 @@ class Categories extends Component {
   };
 
   render = () => {
-    const { setCategory, createCategory, menu } = this.props;
+    const { setCategory, createCategory, menu, category } = this.props;
     const { onDragEnd } = this;
     return (
       <div className="m-auto bg-gray-300 p-4 rounded overflow-hidden shadow-lg">
@@ -46,6 +46,7 @@ class Categories extends Component {
         <CategoryForm
           setCategory={setCategory}
           createCategory={createCategory}
+          category={category}
         />
         {menu ? (
           <DragDropContext onDragEnd={onDragEnd}>
