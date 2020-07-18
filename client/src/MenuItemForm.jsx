@@ -24,52 +24,79 @@ class MenuItemForm extends Component {
     const { uploadFile } = this;
     return (
       <div>
+        <div className="bg-green-400 p-4 text-center text-white rounded text-2xl font-bold rounded-b-none">
+          Add Menu Items
+        </div>
         {menu ? (
-          <form onSubmit={createItem}>
-            <label>
-              Image
-              <input type="file" onChange={uploadFile} />
-            </label>
-            <input
-              type="url"
-              onChange={setItem}
-              id="itemImage"
-              style={{ display: "none" }}
-            />
+          <div className="p-6 bg-gray-300 mb-4 rounded rounded-t-none shadow-2xl">
+            <form
+              onSubmit={createItem}
+              className="grid grid-cols-2 gap-4 mt-10"
+            >
+              <input
+                type="file"
+                onChange={uploadFile}
+                className="col-span-2 cursor-pointer block pin-r pin-t"
+              />
 
-            <input
-              type="text"
-              onChange={setItem}
-              id="itemTitle"
-              className=""
-              placeholder="title"
-            />
+              <input
+                type="url"
+                onChange={setItem}
+                id="itemImage"
+                style={{ display: "none" }}
+              />
 
-            <label>
-              Description
-              <textarea onChange={setItem} id="itemDescription"></textarea>
-            </label>
+              <input
+                type="text"
+                onChange={setItem}
+                id="itemTitle"
+                className="col-span-1"
+                placeholder="title"
+                className="p-2 rounded  shadow"
+              />
+              <input
+                type="number"
+                onChange={setItem}
+                id="itemPrice"
+                placeholder="price"
+                className="col-span-1 rounded p-2 shadow"
+              />
 
-            <label>
-              Price
-              <input type="number" onChange={setItem} id="itemPrice" />
-            </label>
+              <textarea
+                onChange={setItem}
+                id="itemDescription"
+                className="col-span-2 rounded p-2 shadow"
+                placeholder="description"
+              ></textarea>
 
-            <label>
-              Available now?
-              <input type="checkbox" onChange={setItem} id="itemAvailability" />
-            </label>
-            <select id="itemCategory" onChange={setItem}>
-              {menu.map((category, index) => {
-                return (
-                  <option value={category._id} id={category._id} key={index}>
-                    {category.category} {category._id}
-                  </option>
-                );
-              })}
-            </select>
-            <input type="submit" value="Create Menu Item" />
-          </form>
+              {/*
+              <input
+                type="checkbox"
+                onChange={setItem}
+                id="itemAvailability"
+                className="col-span-1"
+              />
+              */}
+              <select
+                id="itemCategory"
+                onChange={setItem}
+                className="col-span-1 p-2 rounded"
+              >
+                {menu.map((category, index) => {
+                  return (
+                    <option value={category._id} id={category._id} key={index}>
+                      {category.category}
+                    </option>
+                  );
+                })}
+              </select>
+              <input
+                type="submit"
+                value="Create Menu Item"
+                className="col-span-1 bg-green-400 text-white text-md  rounded-md"
+              />
+            </form>
+          </div>
         ) : null}
       </div>
     );

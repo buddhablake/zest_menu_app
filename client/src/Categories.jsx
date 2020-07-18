@@ -39,7 +39,10 @@ class Categories extends Component {
     const { setCategory, createCategory, menu } = this.props;
     const { onDragEnd } = this;
     return (
-      <div className="bg-gray-300 p-4 rounded overflow-hidden shadow-lg">
+      <div className="m-auto bg-gray-300 p-4 rounded overflow-hidden shadow-lg">
+        <div className="bg-orange-400 p-4 text-center text-white rounded text-2xl font-bold rounded-b-none -m-4 mb-4">
+          Categories
+        </div>
         <CategoryForm
           setCategory={setCategory}
           createCategory={createCategory}
@@ -61,7 +64,7 @@ class Categories extends Component {
                             {(provided) => {
                               return (
                                 <div
-                                  className="bg-orange-500 w-64 text-white text-center p-2 m-2 text-xl rounded shadow-md"
+                                  className="bg-orange-400 w-full text-white text-center p-2 mb-2 text-xl rounded shadow-md"
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}

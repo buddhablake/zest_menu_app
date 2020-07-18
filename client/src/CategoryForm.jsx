@@ -8,18 +8,18 @@ class CategoryForm extends Component {
       <div>
         <form
           onSubmit={createCategory}
-          className="flex flex-col bg-gray-400 p-4 -m-4 mb-6"
+          className=" flex flex-col bg-gray-300 p-4 -m-4 my-3 justify-around"
         >
           <input
             type="text"
             onChange={setCategory}
-            className="p-2 rounded m-2 shadow"
+            className="p-2 rounded shadow mb-4"
             placeholder="Category"
           />
           <input
             type="submit"
             value="Add Category"
-            className="p-2 bg-blue-600 text-white rounded my-2"
+            className="p-2 bg-blue-500 text-white rounded"
           />
         </form>
       </div>

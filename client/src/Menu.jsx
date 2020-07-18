@@ -8,7 +8,7 @@ class Menu extends Component {
     const { menu, canEdit, deleteItem, updateItem } = this.props;
 
     return (
-      <div style={{ maxWidth: "500px" }}>
+      <div>
         {menu ? (
           <div className="flex flex-col items-center justify-center pl-6 pr-6">
             {menu.map((category, index) => {
@@ -19,18 +19,26 @@ class Menu extends Component {
                       <h2 className="text-center w-full text-2xl text-gray-800 pt-4">
                         {category.category}
                       </h2>
-                      {category.items.map((item, index) => {
-                        return (
-                          <MenuItem
-                            canEdit={canEdit}
-                            menu={menu}
-                            item={item}
-                            deleteItem={deleteItem}
-                            category={category}
-                            updateItem={updateItem}
-                          />
-                        );
-                      })}
+                      <div
+                        className="grid"
+                        style={{
+                          gridTemplateColumns:
+                            "repeat(auto-fill, minmax(300px, 1fr))",
+                        }}
+                      >
+                        {category.items.map((item, index) => {
+                          return (
+                            <MenuItem
+                              canEdit={canEdit}
+                              menu={menu}
+                              item={item}
+                              deleteItem={deleteItem}
+                              category={category}
+                              updateItem={updateItem}
+                            />
+                          );
+                        })}
+                      </div>
                     </div>
                   ) : null}{" "}
                 </div>

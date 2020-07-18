@@ -151,18 +151,6 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <div>
-            <ul className="flex">
-              <li>
-                <Link to="/">Menu</Link>
-              </li>
-
-              <li>
-                <Link to="/dash">Dashboard</Link>
-              </li>
-            </ul>
-          </div>
-
           <div className="p-4">
             <Switch>
               <Route exact path="/">
@@ -172,38 +160,51 @@ class App extends Component {
               </Route>
 
               <Route path="/dash">
-                <div
-                  className="flex justify-around items-center w-full min-h-screen bg-gray-300 p-8 rounded-lg"
-                  style={{ minWidth: "850px" }}
-                >
-                  <div className="flex flex-col ">
-                    {/*  <MenuItemForm
-                    menu={menu}
-                    setItem={setItem}
-                    createItem={createItem}
-                  />*/}
-                    <div className="text-center text-white bg-blue-500 text-3xl p-3 -m-4 z-10 rounded shadow-lg">
-                      Live Menu
-                    </div>
-                    <div
-                      className="bg-gray-100 rounded overflow-scroll py-6"
-                      style={{ width: "400px", height: "600px" }}
-                    >
-                      <Menu
+                <div style={{ minWidth: "900px" }}>
+                  <div className="bg-green-500 min-w-full flex justify-between items-center py-4 px-6 -m-4 mb-6 text-white font-hairline tracking-widest">
+                    <h1 className="text-3xl w-1/2">ZEST</h1>
+                    <ul className="grid grid-cols-2 w-1/2 text-lg font-bold tracking-wider">
+                      <li>
+                        <Link to="/">Menu</Link>
+                      </li>
+
+                      <li>
+                        <Link to="/dash">Dashboard</Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="grid grid-cols-3 gap-12 w-full min-h-screen bg-gray-300 p-12 rounded-lg">
+                    <div className="col-span-1">
+                      <Categories
+                        createCategory={createCategory}
+                        setCategory={setCategory}
                         menu={menu}
-                        canEdit={true}
-                        deleteItem={deleteItem}
-                        updateItem={updateItem}
+                        setNewCatOrder={setNewCatOrder}
                       />
                     </div>
-                  </div>
-                  <div className="">
-                    <Categories
-                      createCategory={createCategory}
-                      setCategory={setCategory}
-                      menu={menu}
-                      setNewCatOrder={setNewCatOrder}
-                    />
+                    <div className="col-span-2 px-4">
+                      <div className="">
+                        <MenuItemForm
+                          menu={menu}
+                          setItem={setItem}
+                          createItem={createItem}
+                        />
+                      </div>
+                      <div
+                        className="bg-gray-100 rounded  rounded-t-none overflow-scroll pb-6"
+                        style={{ height: "600px" }}
+                      >
+                        <div className="text-center text-white bg-blue-500 text-3xl p-3 rounded shadow-lg z-10 rounded-b-none mb-2">
+                          Live Menu
+                        </div>
+                        <Menu
+                          menu={menu}
+                          canEdit={true}
+                          deleteItem={deleteItem}
+                          updateItem={updateItem}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Route>
