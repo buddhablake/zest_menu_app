@@ -14,3 +14,40 @@ Creating a menu on Zest is just as user friendly. Simply define your menus categ
 
 - [Create React App](https://github.com/facebook/create-react-app)
 - [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd)
+- AWS S3
+- MongoDB
+- Express
+- Node
+
+## Favorite Functionality
+
+```javascript
+sortMenu = (menu) => {
+  menu.sort((a, b) => {
+    if (a.catOrderId > b.catOrderId) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  const nextCatOrderId = menu[menu.length - 1].catOrderId + 1;
+
+  this.setState({
+    menu,
+    catOrderId: nextCatOrderId,
+  });
+};
+```
+
+## Roadmap
+
+- Add the ability for restaurant owners to create an account and add their own menu which lives at a unique Zest url (i.e. zest.com/my-restaurant)
+
+- Give restaurant owners the ability to add their logo to the top of the menu.
+
+- Give restaurant owners the ability to add social media links to the bottom of the menu.
+
+- Extend drag and drop functionality to menu items allowing the restaurant owner the ability to reorder items and even drag them into different categories.
+
+- Add the ability for restaurant owners to create multiple menus (breakfast, lunch, dinner, happy hour) and choose the times when each menu should be displayed.
