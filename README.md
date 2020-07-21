@@ -1,6 +1,6 @@
 # Zest Menu App
 
-![alt text](https://imgur.com/hOIbGCu)
+[Imgur](https://imgur.com/hOIbGCu)
 
 ### Technologies
 
