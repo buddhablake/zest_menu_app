@@ -1,6 +1,6 @@
 # Zest Menu App
 
-![Zest Menu App Dashboard](https://i.imgur.com/hOIbGCu.png) ![Zest Menu App](https://i.imgur.com/8V7kmoM.png)
+![Zest Menu App](https://i.imgur.com/tIM1KIF.png)
 
 ### Technologies
 
