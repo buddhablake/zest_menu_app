@@ -42,7 +42,7 @@ sortMenu = (menu) => {
 
 While there is nothing particularly earth shattering about the function above it is the true unsung hero of this project. When changes are made to the menu a call is made to the DB to update those changes. The new menu is returned and then the sortMenu function is called with the object (menu) that is returned from the DB as it's argument. sortMenu then sorts the categories so they appear in the order that the user has set and sets state with the newly sorted object (menu). State has been updated and each component tied to that state re-renders and the menu changes are live across the site.
 
-## Roadmap
+### Roadmap
 
 - Add the ability for restaurant owners to create an account and add their own menu which lives at a unique Zest url (i.e. zest.com/my-restaurant)
 
@@ -53,3 +53,8 @@ While there is nothing particularly earth shattering about the function above it
 - Extend drag and drop functionality to menu items allowing the restaurant owner the ability to reorder items and even drag them into different categories.
 
 - Add the ability for restaurant owners to create multiple menus (breakfast, lunch, dinner, happy hour) and choose the times when each menu should be displayed.
+
+### Contributors
+
+- Coffee
+- Dr. Yerase Board
