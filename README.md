@@ -1,6 +1,7 @@
 # Zest Menu App
 
-<img src="https://imgur.com/hOIbGCu" alt=""/>
+![Zest Menu App Dashboard](https://i.imgur.com/hOIbGCu.png)
+
 ### Technologies
 
 - [Create React App](https://github.com/facebook/create-react-app)
