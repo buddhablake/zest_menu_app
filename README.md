@@ -2,6 +2,8 @@
 
 ![Zest Menu App](https://i.imgur.com/tIM1KIF.png)
 
+### Core Functionality
+
 Zest offers restaurant owners a simple and elegant solution to mobile menus. Its image-focused design allows the food to speak for itself.
 
 Zest Menu's are fully mobile responsive and incredibly user friendly. No more pinching and zooming or waiting for PDF's to download.
