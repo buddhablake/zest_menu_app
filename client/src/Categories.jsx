@@ -8,7 +8,7 @@ class Categories extends Component {
   onDragEnd = (result) => {
     const { menu, setNewCatOrder } = this.props;
     const { destination, source } = result;
-    console.log(menu);
+
     if (!destination) {
       return;
     }

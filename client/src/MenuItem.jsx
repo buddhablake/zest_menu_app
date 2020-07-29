@@ -21,8 +21,11 @@ class MenuItem extends Component {
       deleteItem,
       updateItem,
     } = this.props;
+
     const { showEditForm } = this.state;
+
     const { toggleEditForm } = this;
+
     return (
       <div>
         <div className="relative bg-white rounded-md overflow-hidden text-gray-800 shadow-2xl m-4">

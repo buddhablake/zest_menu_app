@@ -52,9 +52,3 @@ class Menu extends Component {
 }
 
 export default Menu;
-
-// <p className="absolute top-0 left-0 inline bg-pink-200 px-3 py-1 rounded-b rounded-bl-none shadow uppercase text-pink-500 text-xs font-semibold tracking-wider">
-//   New
-// // </p>
-
-// line 13 className="flex flex-col items-center justify-center pl-6 pr-6"

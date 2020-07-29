@@ -65,14 +65,6 @@ class MenuItemForm extends Component {
               placeholder="description"
             ></textarea>
 
-            {/*
-              <input
-                type="checkbox"
-                onChange={setItem}
-                id="itemAvailability"
-                className="col-span-1"
-              />
-              */}
             <select
               id="itemCategory"
               onChange={setItem}

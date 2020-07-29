@@ -91,26 +91,6 @@ class EditItemForm extends Component {
           placeholder="description"
         ></textarea>
 
-        {/*
-        <label>
-          Available now?
-          {item.available ? (
-            <input
-              type="checkbox"
-              onChange={setUpdatedItem}
-              id="updatedItemAvailability"
-              checked
-            />
-          ) : (
-            <input
-              type="checkbox"
-              onChange={setUpdatedItem}
-              id="updatedItemAvailability"
-            />
-          )}
-        </label>
-        */}
-
         <input
           type="submit"
           value="Update Item"

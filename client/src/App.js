@@ -63,7 +63,6 @@ class App extends Component {
     const { category, catOrderId } = this.state;
 
     axios.post("/menu", { category, catOrderId }).then((response) => {
-      console.log(response.data);
       this.sortMenu(response.data);
       this.setState({
         category: "",
