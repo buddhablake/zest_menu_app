@@ -6,6 +6,7 @@ import Menu from "./Menu";
 import Categories from "./Categories";
 import MenuItemForm from "./MenuItemForm";
 import GetStarted from "./GetStarted";
+import Seed from "./Seed";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class App extends Component {
@@ -154,6 +155,15 @@ class App extends Component {
         <Router>
           <div className="p-4">
             <Switch>
+              {/*
+            ===============
+            SEED DB
+            ===============
+              */}
+              <Route exact path="/secret/seed/data/path">
+                <Seed />
+              </Route>
+
               {/*
             ===============
             MENU

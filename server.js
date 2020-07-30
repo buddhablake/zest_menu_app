@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const db = mongoose.connection;
 require("dotenv").config();
+const seedData = require("./models/seedData.js");
 const Menu = require("./models/menu.js");
 
 //================
@@ -32,6 +33,18 @@ db.on("error", (err) => console.log(err.message + " is Mongod not running?"));
 db.on("connected", () => console.log("mongo connected: ", MONGODB_URI));
 db.on("disconnected", () => console.log("mongo disconnected"));
 
+app.post("/menu", (req, res) => {
+  Menu.create(req.body, (err, newCat) => {
+    if (err) {
+      res.send(err);
+    } else {
+      Menu.find({}, (err, menu) => {
+        res.json(menu);
+      });
+    }
+  });
+});
+
 app.post("/new-menu", (req, res) => {
   let cats = [...req.body];
   for (let i = 0; i < cats.length; i++) {
@@ -48,18 +61,6 @@ app.post("/new-menu", (req, res) => {
   }
   Menu.find({}, (err, menu) => {
     res.json(menu);
-  });
-});
-
-app.post("/menu", (req, res) => {
-  Menu.create(req.body, (err, newCat) => {
-    if (err) {
-      res.send(err);
-    } else {
-      Menu.find({}, (err, menu) => {
-        res.json(menu);
-      });
-    }
   });
 });
 
@@ -127,6 +128,24 @@ app.delete("/menu/delete/:catId/:itemId", (req, res) => {
       }
     }
   );
+});
+
+//Create Seed Data
+app.get("/secret/seed/data/path", (req, res) => {
+  db.db.dropCollection("demomenucats", (err, success) => {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      Menu.create(seedData, (err, seedData) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(seedData);
+        }
+      });
+    }
+  });
 });
 
 app.get("*", (req, res) => {
