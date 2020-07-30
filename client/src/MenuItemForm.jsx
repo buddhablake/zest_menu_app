@@ -2,9 +2,15 @@ import React, { Component } from "react";
 import S3FileUpload from "react-s3";
 
 class MenuItemForm extends Component {
-  state = {};
+  state = {
+    uploading: false,
+  };
 
   uploadFile = (e) => {
+    this.setState({
+      uploading: true,
+    });
+
     const config = {
       bucketName: "zest-menu-app",
       region: process.env.REACT_APP_REGION,
@@ -15,12 +21,15 @@ class MenuItemForm extends Component {
     S3FileUpload.uploadFile(e.target.files[0], config).then((response) => {
       console.log(response);
       document.querySelector("#itemImage").value = response.location;
+      this.setState({
+        uploading: false,
+      });
     });
   };
 
   render = () => {
     const { menu, setItem, createItem } = this.props;
-
+    const { uploading } = this.state;
     const { uploadFile } = this;
     return (
       <div>
@@ -80,8 +89,9 @@ class MenuItemForm extends Component {
             </select>
             <input
               type="submit"
-              value="Create Menu Item"
+              value={uploading ? "Uploading..." : "Create Menu Item"}
               className="col-span-1 bg-blue-500 text-white text-md  rounded-md"
+              disabled={uploading}
             />
           </form>
         </div>
